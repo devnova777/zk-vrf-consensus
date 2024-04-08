@@ -6,7 +6,7 @@ This readme describes a novel consensus system for decentalized block generation
 
 Every node in a PoDT network will generate a Block for each round. All Blocks will be gossipped to live peers and each live peer will commit to a vector of signed timestamps. Therefore every node will "own" a block that is associated with a list of timestamps:
 
-Vec<Node1:Commitment1, Node2:Commitment2, ..., NodeN:CommitmentN>.
+`Vec<Node1:Commitment1, Node2:Commitment2, ..., NodeN:CommitmentN>`.
 
 Where a commitment can look like this:
 ```rust
