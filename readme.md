@@ -6,19 +6,23 @@ This readme describes a novel consensus system for decentalized block generation
 
 There are several reasons why one would be interested in novel consensus solutions other than established ones such as POW and POS. 
 
-1. Complexity in setting up a POS network
+## 1. Complexity in setting up a POS network
 
 A POS network requires a complex crypto economic model and sensible token distribution. Many projects make mistakes when issuing coins initially or reach a point of contrapositive distribution soon after launch, due to operational failure, early day protocol errors and scams.
 
-2. Energy inefficiency in POW
+## 2. Energy inefficiency in POW
 
 Proof of work is widely criticized for incentivising pointless allocation of exponentially growing computational power and therefore electricity.
 
-3. Competition and barrier of entry in POS and POW
+## 3. Competition and barrier of entry in POS and POW
 
-Due to 1. and 2. the barrier of entry for most full-node Blockchain protocols is quite high and becoming a validator is a financially straining process.
+Due to 1. and 2. the barrier of entry for most full-node Blockchain protocols is quite high and becoming a validator is a financially straining process. To contribute to POW one usually needs to purchase expensive hardware and to participate in POS one must either be an early adoptor, join a pool, or purchase a large quantity of tokens, often in the tens of thousands to even hundreds of thousands of U.S. dollars.
 
-PoED solves most of these problems and can be combined with a flexible model for crypto economic incentive.
+## PoED advantages
+
+PoED solves most of these problems and can be combined with a flexible model to form a crypto-economic incentive. A validator node will have minimal hardware requirements since the computational power required to calculate zk random values is minimal.
+
+PoED could be employed in a full-node Blockchain / Smart Contract Platform, but it could also be used for decentralized transaction sequencing for Layer 2 rollup solutions.
 
 # bT
 
