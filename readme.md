@@ -55,7 +55,7 @@ winner = min(weights) // find Block with min dT
 
 # bT collision resolution
 
-In cases where the aT of multiple blocks collide, the zk random number generator is used repeatedly until a single winner is determined.
+In cases where the bT of multiple blocks collide, the zk random number generator is used repeatedly until a single winner is determined.
 During the resolution process, a random value is created for each colliding bT and added to that bT. The result is the new aT and the consensus protocol repeats until there are no collisions left and only one Block can be determined as the round winner.
 
 # History of PoDT and Motivation
