@@ -2,7 +2,7 @@
 
 This readme describes a novel consensus system for decentalized block generation. The motivation behind this paper is to establish a verifiable decentalized sequence over a set of inputs, without having to rely on consensus mechanisms with a high barrier of entry (POW, POS, ...). 
 
-# aT and bT
+# bT
 
 Every node in a PoDT network will generate a Block for each round. All Blocks will be gossipped to live peers and each live peer will commit to a vector of signed timestamps. Therefore every node will "own" a block that is associated with a list of timestamps:
 
@@ -18,16 +18,16 @@ Commitment{
 }
 ```
 
-For each node the mean of the timestamps in the commitments is calculated. The result will be used to determine which node's block will be accepted and added to the chain for the current round / height. The mean timestamp for a nodes block will be denoted as bT. We will denote the mean timestamp for a Block as aT.
+For each node the mean of the timestamps in the commitments is calculated. The result will be used to determine which node's block will be accepted and added to the chain for the current round / height. The mean timestamp for a nodes block will be denoted as bT.
 
 # zk randomness
 The zk random number generator will take as public input the nonce and the public key of the node that is generating a value. The private input will be some random seed chosen by the node. The output will be a pseudorandom value.
 
-All nodes will commit a random value that is important for the consensus, denoted as cR to a vector, after aT and the bT for each node's block were calculated.
+All nodes will commit a random value that is important for the consensus, denoted as cR, to a vector, after all bT were calculated.
 
 The result will be a Vec<cR>, where cR is a zk verifiable random number that was generated with the public key of the node and the current nonce as public input.
 
-Circuit abstract:
+Zk-randomness circuit abstract:
 
 ```rust
 // abstract circuit code
