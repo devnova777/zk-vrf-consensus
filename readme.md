@@ -18,14 +18,14 @@ Commitment{
 }
 ```
 
-For each node the mean of the timestamps in the commitments is calculated. The result will be used to determine which node's block will be accepted and added to the chain for the current round / height. The mean timestamp for a nodes block will be denoted as bT.
+For each node the mean of the timestamps in the commitments is calculated. The result will be used to determine which node's block will be accepted and added to the chain for the current round / height. The mean timestamp for a nodes block will be denoted as `bT`.
 
 # zk randomness
 The zk random number generator will take as public input the nonce and the public key of the node that is generating a value. The private input will be some random seed chosen by the node. The output will be a pseudorandom value.
 
-All nodes will commit a random value that is important for the consensus, denoted as cR, to a vector, after all bT were calculated.
+All nodes that want to participate in consensus will commit a random value that is important for the consensus, denoted as `cR`, to a vector, after all `bT` were calculated.
 
-The result will be a Vec<cR>, where cR is a zk verifiable random number that was generated with the public key of the node and the current nonce as public input.
+The result will be a `Vec<cR>`, where `cR` is a zk verifiable random number that was generated with the public key of the node and the current nonce as public input.
 
 Zk-randomness circuit abstract:
 
@@ -40,7 +40,7 @@ env::commit(&sha256(pub_in, priv_in));
 
 # winning blocks
 
-The mean of the cR values will be taken and denoted as aR. The Block whose bT is closest to aR wins the consensus round and is added to the Blockchain.
+The mean of the `cR` values will be taken and denoted as `aR`. The Block whose `bT` is closest to `aR` wins the consensus round and is added to the Blockchain.
 
 
 ```rust
@@ -55,8 +55,8 @@ winner = min(weights) // find Block with min dT
 
 # bT collision resolution
 
-In cases where the bT of multiple blocks collide, the zk random number generator is used repeatedly until a single winner is determined.
-During the resolution process, a random value is created for each colliding bT and added to that bT. The result is the new aT and the consensus protocol repeats until there are no collisions left and only one Block can be determined as the round winner.
+In cases where the `bT` of multiple blocks collide, the zk random number generator is used repeatedly until a single winner is determined.
+During the resolution process, a random value is created for each colliding `bT` and added to that `bT`. The result is the new `bT` and the consensus protocol repeats until there are no collisions left and only one Block can be determined as the round winner.
 
 # History of PoDT and Motivation
 
