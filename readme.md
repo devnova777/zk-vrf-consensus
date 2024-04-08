@@ -8,7 +8,7 @@ There are several reasons why one would be interested in novel consensus solutio
 
 ## A.1. Complexity in setting up a POS network
 
-A POS network requires a complex crypto economic model and sensible token distribution. Many projects make mistakes when issuing coins initially or reach a point of contrapositive distribution soon after launch, due to operational failure, early day protocol errors and scams.
+A POS network requires a complex crypto economic model and sensible token distribution. Many projects make mistakes when issuing coins initially or reach a point of contraproductive/ centralized distribution soon after launch, due to operational failure, early day protocol errors and scams.
 
 ## A.2. Energy inefficiency in POW
 
