@@ -2,7 +2,7 @@
 
 This readme describes a novel consensus system for decentalized block generation. The motivation behind this paper is to establish a verifiable decentalized sequence over a set of inputs, without having to rely on consensus mechanisms with a high barrier of entry (POW, POS, ...). 
 
-# Why reinvent consensus? (A.1.-A.4.)
+# Why reinvent consensus? (A.1.-A.x.)
 
 There are several reasons why one would be interested in novel consensus solutions other than established ones such as POW and POS. 
 
@@ -18,13 +18,15 @@ Proof of work is widely criticized for incentivising pointless allocation of exp
 
 Due to 1. and 2. the barrier of entry for most full-node Blockchain protocols is quite high and becoming a validator is a financially straining process. To contribute to POW one usually needs to purchase expensive hardware and to participate in POS one must either be an early adoptor, join a pool, or purchase a large quantity of tokens, often in the tens of thousands to even hundreds of thousands of U.S. dollars.
 
-## A.4. PoED advantages
+## A.4. PoDT advantages
 
-PoED solves most of these problems and can be combined with a flexible model to form a crypto-economic incentive. A validator node will have minimal hardware requirements since the computational power required to calculate zk random values is minimal.
+PoDT solves most of these problems and can be combined with a flexible model to form a crypto-economic incentive. A validator node will have minimal hardware requirements since the computational power required to calculate zk random values is minimal.
 
-PoED could be employed in a full-node Blockchain / Smart Contract Platform, but it could also be used for decentralized transaction sequencing for Layer 2 rollup solutions.
+PoDT could be employed in a full-node Blockchain / Smart Contract Platform, but it could also be used for decentralized transaction sequencing for Layer 2 rollup solutions.
 
-# bT
+# Consensus Manifesto: PoDT (B.1.-B.x.)
+
+## B.1. bT
 
 Every node in a PoDT network will generate a Block for each round. All Blocks will be gossipped to live peers and each live peer will commit to a vector of signed timestamps. Therefore every node will "own" a block that is associated with a list of timestamps:
 
@@ -42,7 +44,7 @@ Commitment{
 
 For each node the mean of the timestamps in the commitments is calculated. The result will be used to determine which node's block will be accepted and added to the chain for the current round / height. The mean timestamp for a nodes block will be denoted as `bT`.
 
-# zk randomness
+## B.2. zk randomness
 The zk random number generator will take as public input the nonce and the public key of the node that is generating a value. The private input will be some random seed chosen by the node. The output will be a pseudorandom value.
 
 All nodes that want to participate in consensus will commit a random value that is important for the consensus, denoted as `cR`, to a vector, after all `bT` were calculated.
@@ -60,7 +62,7 @@ env::commit(&sha256(pub_in, priv_in));
 
 ```
 
-# winning blocks
+## B.3. winning blocks
 
 The mean of the `cR` values will be taken and denoted as `aR`. The Block whose `bT` is closest to `aR` wins the consensus round and is added to the Blockchain.
 
@@ -75,7 +77,7 @@ for Block in Blocks:
 winner = min(weights) // find Block with min dT
 ```
 
-# bT collision resolution
+## B.4. bT collision resolution
 
 In cases where the `bT` of multiple blocks collide, the zk random number generator is used repeatedly until a single winner is determined.
 During the resolution process, a random value is created for each colliding `bT` and added to that `bT`. The result is the new `bT` and the consensus protocol repeats until there are no collisions left and only one Block can be determined as the round winner.
