@@ -2,6 +2,24 @@
 
 This readme describes a novel consensus system for decentalized block generation. The motivation behind this paper is to establish a verifiable decentalized sequence over a set of inputs, without having to rely on consensus mechanisms with a high barrier of entry (POW, POS, ...). 
 
+# why reinvent consensus?
+
+There are several reasons why one would be interested in novel consensus solutions other than established ones such as POW and POS. 
+
+1. Complexity in setting up a POS network
+
+A POS network requires a complex crypto economic model and sensible token distribution. Many projects make mistakes when issuing coins initially or reach a point of contrapositive distribution soon after launch, due to operational failure, early day protocol errors and scams.
+
+2. Energy inefficiency in POW
+
+Proof of work is widely criticized for incentivising pointless allocation of exponentially growing computational power and therefore electricity.
+
+3. Competition and barrier of entry in POS and POW
+
+Due to 1. and 2. the barrier of entry for most full-node Blockchain protocols is quite high and becoming a validator is a financially straining process.
+
+PoED solves most of these problems and can be combined with a flexible model for crypto economic incentive.
+
 # bT
 
 Every node in a PoDT network will generate a Block for each round. All Blocks will be gossipped to live peers and each live peer will commit to a vector of signed timestamps. Therefore every node will "own" a block that is associated with a list of timestamps:
