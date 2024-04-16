@@ -14,27 +14,30 @@ A proposal may look like this:
 struct Proposal{
     signature: Signature,
     timetamp: Timestamp,
+    block: Block,
     nonce: BlockHeight,
     commitments: Vec<Commitment>
 }
+
 ```
 
-Every other peer must commit to each proposal. A commitment may look like this:
+Idea:
+
+A proposal can be created once a Node's transaction pool for the next Block has reached a certain threshold. Ghost transactions are allowed and act as a computationally cheap alternative to mining. The Block reward will be inversely proportional to the amount of Ghost transactions that are in a Block. When a node reaches the threshold consensus is initialized and each node will use its local transaction pool to create a Proposal.
+
+
+For a Proposal to be valid, it must meet a commitment threshold. A commitment can look like this:
 
 ```rust
 pub struct Commitment{
     signature: Signature
-    timestamp: Timestamp,
+    timestamp: Timestamp
 }
 ```
 
-When a Proposal is considered valid / how many commitments are required for it to be considered valid will be discussed later.
-
 For all valid proposals the mean of the timestamps in the commitments will be evaluated and denoted as `aT`.
 
-Next, a zero knowledge random number generator is used, that takes as public input the public key of a validator, as well as the height of the current Block. The private input to the random number generator will be a random seed chosen by the validator.
-
-All participating Nodes will commit a random value to a vector for the current height, denoted as Vec<`cR`>. The zero knowledge random number generator is used so that it can be verified that the random number was generated with valid public parameters that match the commitment signature of the Node.
+All participating Nodes will commit a random value to a vector for the current height, denoted as Vec<`cR`>.
 
 ```rust
 // abstract zk random number generator
@@ -46,7 +49,11 @@ env::commit(sha256(pub_in , priv_in))
 
 ## Choosing a Winner
 
-The mean value of the `cR` vector will be calculated and denoted as `aR`. The Node that owns the Proposal with a mean commitment timestamp `aT` that is closest to `aR` will be chosen by the consensus to create the next Block. All other Nodes will not be eligible of creating this Block for the current session.
+The mean value of the `cR` vector will be calculated and denoted as `aR`. The Node that owns the Proposal with a mean commitment timestamp `aT` that is closest to sha256(`aR`) will be chosen by the consensus to create the next Block. All other Nodes will not be eligible of creating this Block for the current session. Hashing `aR` provides resistance against 51% attacks. The nodes in the `cR` commitment vector will be ordered and the winner will be selected: ordered[`aR` % n], where n is the number of nodes contributing in this round.
+
+Every Node can verify this selection process by re-evaluating the contributions.
+
+For a Block to be a accepted it must have a sufficient number of contributions and the commitments must be valid. The selection process that incorporates the Chaos function must also be verified.
 
 ## Resolving Conflicts and Collisions in aT
 
