@@ -32,8 +32,8 @@ PoDT offers several benefits compared to other consensus mechanisms like POW and
 |---|---|---|---|
 | $$$ | y | y | n |
 | economically friendly | y | n | y |
-| widely criticized | y | y | n |
+| fully decentralized | n | y | n |
 | established | y | y | n |
-| flexibility w.r.t. economic incentive | n | n | y |
+| economic incentive for node operators | y | y | depends |
 
 PoDT is obviously not yet widely criticized since it has not been used in a production Blockchain, the poor reputation of POS and POW however are yet another reason why one may choose a novel, zk-based consensus mechanism.
