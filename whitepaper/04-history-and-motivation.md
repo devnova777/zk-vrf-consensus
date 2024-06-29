@@ -8,4 +8,4 @@ To not exceed the scope of this paper, I would like to summarize "Inpigritas" as
 
 After prototyping my initial idea for Inpigritas, I found out that Intel used to experiment with a conesnsus protocol known as PoET "Proof of Elapsed Time", which sadly was not decentralized since it was highly dependant on Intel cloud infrastructure and in-house virtualization.
 
-Now, In 2023, as a member of a core team working on zero knowledge scaling solutions for the Casper Blockchain, I have more hands-on experience and a broader horizon. This enabled me to develop PoDT to a point where I think that it can be implemented and potentially even used in either a decentralized sequencer, or even a full-node Blockchain Layer 1.
+Now, In 2023, as a member of a core team working on zero knowledge scaling solutions for the Casper Blockchain, I have more hands-on experience and a broader horizon. This enabled me to develop PoRD to a point where I think that it can be implemented used in either a decentralized sequencer, or even a Layer 1 full-node.

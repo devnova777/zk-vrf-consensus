@@ -16,19 +16,19 @@ Proof of Stake protocols usually collect commitments from a set of Nodes eligibl
 
 In order to become eligible of creating a new Block one has must delegate a certain Token threshold / `stake`.
 
-# Introduction to Proof of Delta Time: A novel, zk-based consensus mechanism
+# Introduction to Proof of Random Delta: A novel, zk-based consensus mechanism
 
-With Proof of Delta Time a new consensus mechanism enters the scene that will be described in more detail in chapter `02-PoDT-abstract.md`. 
+With Proof of Random Delta a new consensus mechanism enters the scene that will be described in more detail in chapter `02-PoRD-abstract.md`. 
 
-PoDT relies on verifiable random number generation and independent commitments to select the next node eligible of creating a Block. 
+PoRD relies on verifiable random number generation and independent commitments to select the next node eligible of creating a Block. 
 
-In PoDT every node can propose a valid Block, but only one Block will be chosen and included in the Blockchain for each round.
+In PoRD every node can propose a valid Block, but only one Block will be chosen and included in the Blockchain for each round.
 
-# Benefits of Proof of Delta Time 
+# Benefits of Proof of Random Delta 
 
-PoDT offers several benefits compared to other consensus mechanisms like POW and POS, but especially relevant is the low barrier of entry for new node operators. Since no expensive equipment or large token delegation is required, anyone can participate in consensus and run a node on cheap, standard hardware. This protopery largely benefits the degree of decentralization that is theoretically achievable with PoDT.
+PoRD offers several benefits compared to other consensus mechanisms like POW and POS, but especially relevant is the low barrier of entry for new node operators. Since no expensive equipment or large token delegation is required, anyone can participate in consensus and run a node on cheap, standard hardware. This protopery largely benefits the degree of decentralization that is theoretically achievable with PoRD.
 
-| Property | POS | POW | PODT |
+| Property | POS | POW | PoRD |
 |---|---|---|---|
 | $$$ | y | y | n |
 | economically friendly | y | n | y |
@@ -36,4 +36,4 @@ PoDT offers several benefits compared to other consensus mechanisms like POW and
 | established | y | y | n |
 | economic incentive for node operators | y | y | y |
 
-PoDT is obviously not yet widely criticized since it has not been used in a production Blockchain, the poor reputation of POS and POW however are yet another reason why one may choose a novel, zk-based consensus mechanism.
+PoRD is obviously not yet widely criticized since it has not been used in a production Blockchain, the poor reputation of POS and POW however are yet another reason why one may choose a novel, zk-based consensus mechanism.

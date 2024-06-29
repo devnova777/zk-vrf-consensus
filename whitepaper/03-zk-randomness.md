@@ -1,8 +1,10 @@
 # Zero Knowledge Random Number Generator
 
-The zero knowledge random number generator described in `02-PoDT-abstract.md` is quite straightforward and can be implemented in any ZKVM or domain specific language of choice. 
+The zero knowledge random number generator described in `02-PoRD-abstract.md` is quite straightforward and can be implemented in any ZKVM or domain specific language of choice. 
 
-Random numbers used in PoDT could be generated without zero knowledge, but this is not advisible since the private random seed would get lost and therefore anyone could predict the random numbers produced by a node for a round knowing just the public key and the height.
+Random numbers used in PoRD could be generated without zero knowledge, but this is not advisible since the private random seed would get lost and therefore anyone could predict the random numbers produced by a node for a round knowing just the public key and the height (or whatever public parameters were chosen).
+
+The objective when using ZK for this task is to obfuscate the random seed and verify that the random number is valid for a consensus round.
 
 What's great about the zero knowledge random number is that during the commitment phase to the Proposals, no Node knows what `aR` will ultimately be. Therefore it is not possible to change the timestamp in such a way that the odds of winning the next round increase. If a node actively decides to commit an invalid timestamp then that is not necessarily a problem. An additional layer of security could be added by performing an outlier elimination over the timestamps in the commitments.
 
