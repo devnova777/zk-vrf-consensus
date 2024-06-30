@@ -47,7 +47,7 @@ env::commit(sha256(pub_in , priv_in))
 
 ## Choosing a Winner
 
-The mean value of the `cR` vector will be calculated and denoted as `aR`. The Node that owns the Proposal with a mean commitment timestamp `aT` that is closest to sha256(`aR`) will be chosen by the consensus to create the next Block. All other Nodes will not be eligible of creating this Block for the current session. Hashing `aR` provides resistance against 51% attacks. The nodes in the `cR` commitment vector will be ordered and the winner will be selected: ordered[`aR` % n], where n is the number of nodes contributing in this round.
+The mean value of the `cR` vector will be calculated and denoted as `aR`. The Node that owns the Proposal with a mean commitment timestamp `aT` that is closest to sha256(`aR`) will be chosen by the consensus to create the next Block. All other Nodes will not be eligible of creating this Block for the current session. The nodes in the `cR` commitment vector will be ordered and the winner will be selected: ordered[`aR` % n], where n is the number of nodes contributing in this round.
 
 Every Node can verify this selection process by re-evaluating the contributions.
 
