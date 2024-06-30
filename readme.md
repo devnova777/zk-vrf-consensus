@@ -2,7 +2,7 @@
 
 # Proof of Random Delta
 
-PoRD is a consensus protocol where the odds of each validator to be selected to create the next block are always equal.
+PoRD is a consensus protocol where the odds of each validator being selected to create the next block are always equal.
 
 Consensus is established over a sequence of commitments (zero knowledge random numbers).
 
