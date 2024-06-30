@@ -1,3 +1,5 @@
+:space_invader: Skip this section if you are somewhat knowledgeable about Blockchain Consensus :space_invader:
+
 # Introduction to Blockchain Consensus
 
 Blockchain consensus is required for all decentralized networks where Blocks are generated according to any Blockchain protocol. A Blockchain protocol is a set of rules that determine under which conditions Blocks are created and how operating Nodes is economically incentivised.
