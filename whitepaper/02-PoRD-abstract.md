@@ -51,7 +51,7 @@ The mean value of the `cR` vector will be calculated and denoted as `aR`. The No
 
 Every Node can verify this selection process by re-evaluating the contributions.
 
-For a Block to be a accepted it must have a sufficient number of contributions and the commitments must be valid. The selection process that incorporates the Chaos function must also be verified.
+For a Block to be accepted it must have a sufficient number of contributions and the commitments must be valid. The selection process that incorporates the Chaos function must also be verified.
 
 ## Resolving Conflicts and Collisions in aT
 
