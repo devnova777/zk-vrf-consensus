@@ -22,7 +22,7 @@ With Proof of Random Delta a new consensus mechanism enters the scene that will 
 
 PoRD relies on verifiable random number generation and independent commitments to select the next node eligible of creating a Block. 
 
-In PoRD every node can propose a valid Block, but only one Block will be chosen and included in the Blockchain for each round.
+In PoRD every node can propose a valid Block, but similar to POS and POW only one Block will be chosen and included in the Blockchain for each round.
 
 # Benefits of Proof of Random Delta 
 
