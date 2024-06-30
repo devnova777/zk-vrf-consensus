@@ -10,7 +10,7 @@ A 2/3rd majority of the known validators must commit to a block for it to be val
 
 For more information, read `./whitepaper`.
 
-# Proof of Concept Zero Knowledge Random Number generator fot PoRD
+# Proof of Concept Zero Knowledge Random Number generator for PoRD
 To test the zk random number example:
 ```bash
 cd zk-rand
