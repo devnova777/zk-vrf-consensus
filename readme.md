@@ -1,3 +1,5 @@
+:warning: This repository describes an experimental consensus protcol that has not yet been used in any network. Proceed with caution! :warning:
+
 # Proof of Random Delta
 
 PoRD is a consensus protocol where the odds of each validator to be selected to create the next block are always equal.
