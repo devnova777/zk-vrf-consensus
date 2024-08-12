@@ -6,14 +6,14 @@ pub type Nonce = Vec<u8>;
 // serialized Seed
 pub type Seed = Vec<u8>;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CircuitInputs {
     pub public_key: PublicKey,
     pub nonce: Nonce,
     pub seed: Seed,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct CircuitOutputs {
     pub public_key: PublicKey,
     pub nonce: Nonce,
