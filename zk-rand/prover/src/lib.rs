@@ -4,7 +4,7 @@ use zk_logic::{
     random_bytes_to_int,
     types::{CircuitInputs, CircuitOutputs},
 };
-use zk_methods::{ZK_RAND_ELF, ZK_RAND_ID};
+pub use zk_methods::{ZK_RAND_ELF, ZK_RAND_ID};
 
 pub fn generate_random_number(public_key: Vec<u8>, nonce: Vec<u8>) -> Receipt {
     tracing_subscriber::fmt()
