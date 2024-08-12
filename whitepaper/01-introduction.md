@@ -36,6 +36,6 @@ PoRD offers several benefits compared to other consensus mechanisms like POW and
 | economically friendly | y | n | y |
 | fully decentralized | n | y | n |
 | established | y | y | n |
-| economic incentive for node operators | y | y | y |
+| economic incentive for node operators | y | y | y or n |
 
 PoRD is obviously not yet widely criticized since it has not been used in a production Blockchain, the poor reputation of POS and POW however are yet another reason why one may choose a novel, zk-based consensus mechanism.
