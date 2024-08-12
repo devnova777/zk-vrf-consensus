@@ -1,11 +1,12 @@
-use zk_methods::{
-    ZK_RAND_ELF, ZK_RAND_ID
-};
-use risc0_zkvm::{default_prover, ExecutorEnv};
-use zk_logic::{random_bytes_to_int, types::{CircuitInputs, CircuitOutputs}};
 use rand::Rng;
+use risc0_zkvm::{default_prover, ExecutorEnv, Receipt};
+use zk_logic::{
+    random_bytes_to_int,
+    types::{CircuitInputs, CircuitOutputs},
+};
+use zk_methods::{ZK_RAND_ELF, ZK_RAND_ID};
 
-fn main() {
+pub fn generate_random_number(public_key: Vec<u8>, nonce: Vec<u8>) -> Receipt {
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
         .init();
@@ -13,12 +14,12 @@ fn main() {
     let mut rng = rand::thread_rng();
     let random_float: f64 = rng.gen();
     let seed: Vec<u8> = random_float.to_be_bytes().to_vec();
-    let input: CircuitInputs = CircuitInputs{
-        public_key: vec![0;32],
+    let input: CircuitInputs = CircuitInputs {
+        public_key,
         // some int .to_bytes()
-        nonce: vec![1;32],
+        nonce,
         // something of sufficient randomness
-        seed
+        seed,
     };
     let env = ExecutorEnv::builder()
         .write(&input)
@@ -26,12 +27,12 @@ fn main() {
         .build()
         .unwrap();
     let prover = default_prover();
-    let receipt = prover
-        .prove(env, ZK_RAND_ELF)
-        .unwrap();
+    let receipt = prover.prove(env, ZK_RAND_ELF).unwrap();
     let output: CircuitOutputs = receipt.journal.decode().unwrap();
-    println!("ZK random number: {:?}", random_bytes_to_int(&output.random_bytes));
+    println!(
+        "ZK random number: {:?}",
+        random_bytes_to_int(&output.random_bytes)
+    );
+    receipt.verify(ZK_RAND_ID).unwrap();
     receipt
-        .verify(ZK_RAND_ID)
-        .unwrap();
 }

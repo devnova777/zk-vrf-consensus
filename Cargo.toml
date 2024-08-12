@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["zk-logic"]
+members = ["zk-logic", "zk-rand/host"]
 
 
 [profile.release]
