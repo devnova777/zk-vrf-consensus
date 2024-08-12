@@ -10,7 +10,7 @@ What's great about the zero knowledge random number is that during the commitmen
 
 If we didn't use zk random numbers and instead just hashed the public key and nonce for each Node, then commitments could be predicted and an attacker would know in advance which node is scheduled to create a block.
 
-Example: A malicious actor precomputes the random values for each live validator and determines that for the next Block height the value of `aC` will likely be larger than the average timestamp.
+Example: A malicious actor precomputes the random values for each live validator and determines that for the next Block height the value of `aC` will be x and validator Vx will be selected to create the next Block.
 
 Thanks to zero knowledge proofs, we can obfuscate the seed and make it invisible, yet preserve the verifiability and prove that the random number was generated for a Node's public key using the current height of the next Block as nonce.
 
