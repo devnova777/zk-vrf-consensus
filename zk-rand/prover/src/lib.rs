@@ -7,10 +7,6 @@ use zk_logic::{
 pub use zk_methods::{ZK_RAND_ELF, ZK_RAND_ID};
 
 pub fn generate_random_number(public_key: Vec<u8>, nonce: Vec<u8>) -> Receipt {
-    tracing_subscriber::fmt()
-        .with_env_filter(tracing_subscriber::filter::EnvFilter::from_default_env())
-        .init();
-
     let mut rng = rand::thread_rng();
     let random_float: f64 = rng.gen();
     let seed: Vec<u8> = random_float.to_be_bytes().to_vec();
