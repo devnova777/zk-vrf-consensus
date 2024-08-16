@@ -23,12 +23,41 @@ pub fn generate_random_number(public_key: Vec<u8>, nonce: Vec<u8>) -> Receipt {
         .build()
         .unwrap();
     let prover = default_prover();
-    let receipt = prover.prove(env, ZK_RAND_ELF).unwrap();
-    let output: CircuitOutputs = receipt.journal.decode().unwrap();
+    let prove_info = prover.prove(env, ZK_RAND_ELF).unwrap();
+    let output: CircuitOutputs = prove_info.receipt.journal.decode().unwrap();
     println!(
         "ZK random number: {:?}",
         random_bytes_to_int(&output.random_bytes)
     );
-    receipt.verify(ZK_RAND_ID).unwrap();
-    receipt
+    //prove_info.receipt.verify(ZK_RAND_ID).unwrap();
+    prove_info.receipt
+}
+
+#[test]
+fn test_generate_random_numbers() {
+    for _ in 0..100 {
+        let mut rng = rand::thread_rng();
+        let random_float: f64 = rng.gen();
+        let seed: Vec<u8> = random_float.to_be_bytes().to_vec();
+        let input: CircuitInputs = CircuitInputs {
+            public_key: vec![0; 32],
+            // some int .to_bytes()
+            nonce: vec![1; 32],
+            // something of sufficient randomness
+            seed,
+        };
+        let env = ExecutorEnv::builder()
+            .write(&input)
+            .unwrap()
+            .build()
+            .unwrap();
+        let prover = default_prover();
+        let prove_info = prover.prove(env, ZK_RAND_ELF).unwrap();
+        let output: CircuitOutputs = prove_info.receipt.journal.decode().unwrap();
+        println!(
+            "ZK random number: {:?}",
+            random_bytes_to_int(&output.random_bytes)
+        );
+        prove_info.receipt.verify(ZK_RAND_ID).unwrap();
+    }
 }
