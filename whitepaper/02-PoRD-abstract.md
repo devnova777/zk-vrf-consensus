@@ -45,6 +45,8 @@ env::commit(sha256(pub_in , priv_in))
 
 ## Choosing a Winner
 
+*An implementation of this algorithm can be found [here](https://github.com/jonas089/PoRD-sequencer/blob/master/src%2Fconsensus%2Flogic.rs)*
+
 The Node that owns the Commitment closest to `aC` will be chosen by the consensus to create the next Block. All other Nodes will not be eligible of creating this Block for the current session.
 
 Every Node can verify this selection process by re-evaluating the contributions.
