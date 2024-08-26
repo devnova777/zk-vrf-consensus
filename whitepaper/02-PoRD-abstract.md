@@ -54,6 +54,6 @@ Every Node can verify this selection process by re-evaluating the contributions.
 For a Block to be accepted it must have a sufficient number of contributions and the commitments must be valid. The selection process that incorporates the Chaos function must also be verified.
 
 ## Valid Proposals
-As mentioned earlier Proposals must meet a commitment threshold of 2/3rds. This measure helps prevent chain-splits.
+As mentioned earlier Proposals must meet a commitment threshold of at least 51% of the validator set. This measure helps prevent chain-splits.
 
 A low barrier of entry in PoRD makes it a potential target for 51% attacks. Therefore it is recommended that a fixed set of trusted validators is announced. New validators could be voted in to further decentralize the network, but setting up fully anonymous validator nodes will not be possible.
