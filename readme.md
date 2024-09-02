@@ -6,7 +6,7 @@ Review: ZK might not be necessary here as a VRF could suffice. However it does w
 
 PoRD is a consensus protocol where the odds of each validator being selected to create the next block are always equal.
 
-Consensus is established over a sequence of commitments (zero knowledge random numbers).
+Consensus is established over a sequence of commitments (zero knowledge random numbers or VRF).
 
 A 51%+ majority of the known validators must commit to a block for it to be valid.
 

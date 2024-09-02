@@ -4,39 +4,44 @@ This abstract explains how PoRD can be implemented.
 ## Block Proposal and Commitments
 Before a new Block can be created, a selection process must happen where a single Node is chosen that is eligible of creating the next Block. In between Blocks Nodes synchronize transaction data with live peers.
 
-During the selection process every Node that wants to participate in consensus will sign a Proposal.
+During the selection process every Node that wants to participate in consensus will sign a Consensus Commitment.
 
 A proposal may look like this:
 
 ```rust
-struct Proposal{
-    signature: Signature,
-    timetamp: Timestamp,
-    block: Block,
-    nonce: BlockHeight,
-    commitments: Vec<Commitment>
+struct ConsensusCommitment{
+    validator: Key,
+    receipt: Receipt
 }
-
 ```
+where `Receipt` is a Risc0 zero knowledge proof but can be replaced with any VRF/ ZK random number.
 
 Idea:
 
 A proposal can be created once a Node's transaction pool for the next Block has reached a certain threshold. 
 
-For a Proposal to be valid, it must meet a commitment threshold (2/3rds of the validator set). A commitment can look like this:
+For a Proposal to be valid, it must meet a commitment threshold (51%+ of the validator set). 
+
+A commitment can look like this:
 
 ```rust
-pub struct BlockCommitment{
-    signature: Signature
+pub struct Block{
+    height: Int,
+    transactions: Vec<Transaction>,
+    commitments: Vec<BlockCommitment>
+    ...,
+    signature: Signature,
     timestamp: Timestamp
 }
 ```
 
 Before a Block can be proposed the validator eligible of creating that Block is selected.
-Each validator participating in the consensus round commits a zk random number as a consensus commitment. The mean of these zk random numbers is denoted as `aC`.
+Each validator participating in the consensus round commits a random number as a consensus commitment. 
+The mean of these zk random numbers is denoted as `aC`.
 
 ```rust
 // abstract zk random number generator
+// note: this could be replaced with a common VRF
 let inputs = env::read();
 let pub_in = inputs.public;
 let priv_in = inputs.private;

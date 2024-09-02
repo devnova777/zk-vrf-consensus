@@ -14,4 +14,4 @@ Example: A malicious actor precomputes the random values for each live validator
 
 Thanks to zero knowledge proofs, we can obfuscate the seed and make it invisible, yet preserve the verifiability and prove that the random number was generated for a Node's public key using the current height of the next Block as nonce.
 
-
+Extension: Note that something very similar can be achieved using a common VRF (verifiable random function) - this is usually used in POS consensus
