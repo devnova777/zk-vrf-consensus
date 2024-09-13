@@ -1,7 +1,7 @@
 # Whitepaper: L2 Distributed Sequencer
 Design and Implementation by [Jonas Pauli](https://www.linkedin.com/in/jonas-pauli/)
 ## Introduction
-This paper describes a distributed sequencer for Layer 2 blockchain transactions. Decentralized sequencing is difficult to achieve and usually involves multiple consensus layers and is reliant complex tokenomics. This project strives to offer a simplified alternative to centralized sequencing with a fixed set of distributed validators rather than achieve the highest possible degree of decentralization. By design this sequencer has *no tokenomic model* but in theory one could be built on top of the simple consensus layer.
+This paper describes a distributed sequencer for Layer 2 blockchain transactions. Decentralized sequencing is difficult to achieve and usually involves multiple consensus layers and is reliant on complex tokenomics. This project strives to offer a simplified alternative to centralized sequencing with a fixed set of distributed validators rather than achieve the highest possible degree of decentralization. By design this sequencer has *no tokenomic model* but in theory one could be built on top of the simple consensus layer.
 
 ## Implementation details: Work in Progress
 An *MVP* (Minimum Viable Product) implementation of this sequencer can be found [here](https://github.com/jonas089/l2-sequencer).
