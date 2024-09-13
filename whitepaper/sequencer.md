@@ -53,6 +53,34 @@ For the remaining time of the current round *r*, the selected `proposing_validat
 
 The synchronization loop will help nodes that join the network catch up with blocks they missed.
 
+### Solving Finality: Experimental for MVP
+Finality will be reached by keeping track of the block with the lowest hash and only proceeding to gossip blocks with a hash lower than that.
+
+This is implemented such that when a block proposal is received by a node, it is either dropped or signed depending on it being the lowest:
+
+```rust
+let early_revert: bool = match &state_lock.consensus_state.lowest_block {
+    Some(v) => {
+        if proposal.to_bytes() < v.clone() {
+            state_lock.consensus_state.lowest_block = Some(proposal.to_bytes());
+            false
+        } else {
+            true
+        }
+    }
+    None => {
+        state_lock.consensus_state.lowest_block = Some(proposal.to_bytes());
+        false
+    }
+};
+if early_revert {
+    return error_response;
+}
+```
+
+This might occasionally override a synchronized block. Synchronized blocks are also checked against those in storage to determine whether or not 
+they are lower. Should a synchronized block be lower than the block in storage, then it will replace that block in storage.
+
 ### Edge Case: Validator fails to commit
 Should the `committing_validator` fail to commit by the end of the round:
 
