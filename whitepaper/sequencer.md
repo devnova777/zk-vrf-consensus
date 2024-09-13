@@ -26,3 +26,7 @@ The selected round validator is eligble of committing a random value to other no
     let index = (validator_commitment % (validators.len() - 1))
     let proposing_validator = validators[index as usize]
 ```
+
+For the remaining time of the current round *r*, the selected `proposing_validator` may propose a new Block and gossip it to other validator. Those validators will attest to the block by signing it and gossip it further. Once the signature threshold is met the Block will be stored by receiving nodes. 
+
+The synchronization loop will help nodes that join the network catch up with Blocks they missed.
