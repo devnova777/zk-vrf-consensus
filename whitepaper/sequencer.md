@@ -49,7 +49,7 @@ The selected `committing_validator` is eligble of committing a verifiable random
     let proposing_validator = validators[index as usize]
 ```
 
-For the remaining time of the current round *r*, the selected `proposing_validator` may propose a new block and gossip it to other validator. Those validators will attest to the block by signing it and gossip it further. Once the signature threshold is met the block will be stored by receiving nodes. 
+For the remaining time of the current round *r*, the selected `proposing_validator` may propose a new block and gossip it to other validators. Those validators will attest to the block by signing it and gossip it further. Once the signature threshold is met the block will be stored by receiving nodes. 
 
 The synchronization loop will help nodes that join the network catch up with blocks they missed.
 

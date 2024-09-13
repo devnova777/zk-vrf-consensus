@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-zk-methods = { path = "../zk-methods" }
-risc0-zkvm = { version = "1.1.0-rc.3" }
+risc0-zkvm = { version = "1.0.5" }
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 serde = "1.0"
 zk-logic = { path = "../../zk-logic" }
 rand = "0.8.5"
+zk-methods = { path = "../zk-methods" }
