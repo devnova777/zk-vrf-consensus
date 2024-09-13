@@ -1,0 +1,1 @@
+[Whitepaper](https://github.com/jonas089/PoRD/blob/master/whitepaper%2Fsequencer.md)
