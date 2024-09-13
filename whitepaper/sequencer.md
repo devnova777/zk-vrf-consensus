@@ -1,7 +1,7 @@
 # Whitepaper: L2 Distributed Sequencer
 Design and Implementation by [Jonas Pauli](https://www.linkedin.com/in/jonas-pauli/)
 ## Introduction
-This paper describes a distributed sequencer for Layer 2 Blockchain Transactions. Decentralized sequencing is difficult to achieve and usually involves multiple consensus layers and is reliant complex tokenomics. This project strives to offer a simplified alternative to centralized sequencing with a fixed set of distributed validators rather than achieve the highest possible degree of decentralization. By design this sequencer has *no tokenomic model* but in theory one could be built on top of the simple consensus layer.
+This paper describes a distributed sequencer for Layer 2 blockchain transactions. Decentralized sequencing is difficult to achieve and usually involves multiple consensus layers and is reliant complex tokenomics. This project strives to offer a simplified alternative to centralized sequencing with a fixed set of distributed validators rather than achieve the highest possible degree of decentralization. By design this sequencer has *no tokenomic model* but in theory one could be built on top of the simple consensus layer.
 
 ## Implementation details: Work in Progress
 An *MVP* (Minimum Viable Product) implementation of this sequencer can be found [here](https://github.com/jonas089/l2-sequencer).
@@ -25,9 +25,9 @@ Firstly it is important to note that this codebase is provided as-is and there a
 In order to improve liveness several design decisions have been made and a minimum viable consensus protocol has been designed.
 
 ### Consensus
-Validator Nodes collect arbitrary Transactions, or better said arbitrary Transaction Hashes and store them in a temporary mempool. As for the first iteration of development, the *MVP*, transaction pools are not synchronized between nodes but instead each node commits its pool when proposing a Block. This is not ideal but assuming a small set of validators can be sufficiently fast. 
+Validator Nodes collect arbitrary transactions, or better said arbitrary transaction hashs and store them in a temporary mempool. As for the first iteration of development, the *MVP*, transaction pools are not synchronized between nodes but instead each node commits its pool when proposing a block. This is not ideal but assuming a small set of validators can be sufficiently fast. 
 
-For each Block height *h* a round *r* is defined as:
+For each block height *h* a round *r* is defined as:
 
 ```rust
     let round = (get_current_time() - last_block_unix_timestamp)
@@ -49,12 +49,24 @@ The selected `committing_validator` is eligble of committing a verifiable random
     let proposing_validator = validators[index as usize]
 ```
 
-For the remaining time of the current round *r*, the selected `proposing_validator` may propose a new Block and gossip it to other validator. Those validators will attest to the block by signing it and gossip it further. Once the signature threshold is met the Block will be stored by receiving nodes. 
+For the remaining time of the current round *r*, the selected `proposing_validator` may propose a new block and gossip it to other validator. Those validators will attest to the block by signing it and gossip it further. Once the signature threshold is met the block will be stored by receiving nodes. 
 
-The synchronization loop will help nodes that join the network catch up with Blocks they missed.
+The synchronization loop will help nodes that join the network catch up with blocks they missed.
 
 ### Edge Case: Validator fails to commit
+Should the `committing_validator` fail to commit by the end of the round:
+
+- a new round will be started with the next validator in que as the `committing_validator`
+- there will be a clearing period of `c` seconds during which no new commitments or blocks may be accepted
 
 ### Edge Case: Validator fails to propose
+- Should the selected `proposing_validator` fail to propose a block for the round, a new round will start automatically and the next validator will be selected. 
 
-### Edge Case: Block has insufficient commitments e.o.r (End of Round)
+The amount of rounds for the current block is calculated such that:
+
+```rust
+    current_round = ((current_timestamp - last_block_timestamp) / ROUND_DURATION) + 1
+```
+
+
+### Edge Case: block has insufficient commitments e.o.r (End of Round)
