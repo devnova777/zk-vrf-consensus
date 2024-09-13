@@ -36,13 +36,13 @@ For each Block height *h* a round *r* is defined as:
 
 A block is stored when a round concludes successfully. There can be multiple rounds for a single block height in case the selected validator fails to commit a random number for a round.
 
-In cases where the round validator fails to commit a random number by the end of the round, a new validator will be selected (the next validator in the fixed set of validators). The validator chosen to commit a random number is chosen such that:
+In cases where the `committing_validator` fails to commit a random number by the end of the round, a new validator will be selected (the next validator in the fixed set of validators). The validator chosen to commit a random number is chosen such that:
 
 ```rust
     let committing_validator = validators[round % (validators.len() - 1)]
 ```
 
-The selected round validator is eligble of committing a random value to other nodes. Those nodes will then deterministically evaluate the validator who is eligible of creating the next block:
+The selected `committing_validator` is eligble of committing a verifiable random value (generated using a VRF - currently a ZK VRF) to other nodes. Those nodes will then deterministically evaluate the validator who is eligible of creating the next block:
 
 ```rust
     let index = (validator_commitment % (validators.len() - 1))
