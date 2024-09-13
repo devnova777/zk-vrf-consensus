@@ -81,6 +81,8 @@ if early_revert {
 This might occasionally override a synchronized block. Synchronized blocks are also checked against those in storage to determine whether or not 
 they are lower. Should a synchronized block be lower than the block in storage, then it will replace that block in storage.
 
+Finality signatures should be implemented so that only finalized blocks can be synchronized.
+
 ### Edge Case: Validator fails to commit
 Should the `committing_validator` fail to commit by the end of the round:
 
