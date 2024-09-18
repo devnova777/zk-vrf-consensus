@@ -54,6 +54,7 @@ For the remaining time of the current round *r*, the selected `proposing_validat
 The synchronization loop will help nodes that join the network catch up with blocks they missed.
 
 ### Solving Finality: Experimental for MVP
+https://github.com/jonas089/L2-sequencer/issues/8
 Finality will be reached by keeping track of the block with the lowest hash and only proceeding to gossip blocks with a hash lower than that.
 
 This is implemented such that when a block proposal is received by a node, it is either dropped or signed depending on it being the lowest:
