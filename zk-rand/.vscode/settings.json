@@ -1,6 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [
-        "./methods/guest/Cargo.toml",
-        "./host/Cargo.toml"
+        "./zk-methods/randomness/Cargo.toml",
+        "./zk-rand/Cargo.toml"
     ]
 }
